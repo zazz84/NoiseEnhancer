@@ -1,0 +1,130 @@
+
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/.suo
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/Browse.VC.db
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/Browse.VC.opendb
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/ipch/AutoPCH/392d395a50c0f3c2/ENVELOPEFOLLOWER.ipch
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/ipch/AutoPCH/5ebecaf5edd8bac2/PLUGINEDITOR.ipch
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/ipch/AutoPCH/7724c4be5726005a/FILTER.ipch
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/ipch/AutoPCH/9ba1ab2f82cda76d/PLUGINPROCESSOR.ipch
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/Solution.VC.db
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/Solution.VC.db-shm
+Builds/VisualStudio2017/.vs/NoiseEnhancer/v15/Solution.VC.db-wal
+Builds/VisualStudio2017/NoiseEnhancer.sln
+Builds/VisualStudio2017/NoiseEnhancer_SharedCode.vcxproj
+Builds/VisualStudio2017/NoiseEnhancer_SharedCode.vcxproj.filters
+Builds/VisualStudio2017/NoiseEnhancer_StandalonePlugin.vcxproj
+Builds/VisualStudio2017/NoiseEnhancer_StandalonePlugin.vcxproj.filters
+Builds/VisualStudio2017/NoiseEnhancer_VST3.vcxproj
+Builds/VisualStudio2017/NoiseEnhancer_VST3.vcxproj.filters
+Builds/VisualStudio2017/NoiseEnhancer_VST3.vcxproj.user
+Builds/VisualStudio2017/NoiseEnhancer_VST3ManifestHelper.vcxproj
+Builds/VisualStudio2017/NoiseEnhancer_VST3ManifestHelper.vcxproj.filters
+Builds/VisualStudio2017/resources.rc
+Builds/VisualStudio2017/x64/Debug/Shared Code/EnvelopeFollower.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/Filter.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_basics.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_devices.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_formats.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_plugin_client_ARA.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_processors.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_processors_ara.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_processors_lv2_libs.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_audio_utils.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_core.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_data_structures.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_events.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_graphics.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_gui_basics.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/include_juce_gui_extra.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/CL.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/CL.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/CL.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/Lib-link.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/Lib-link.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/Lib.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnh.B7546002.tlog/NoiseEnhancer_SharedCode.lastbuildstate
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnhancer.lib
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnhancer.pdb
+Builds/VisualStudio2017/x64/Debug/Shared Code/NoiseEnhancer_SharedCode.log
+Builds/VisualStudio2017/x64/Debug/Shared Code/PluginEditor.obj
+Builds/VisualStudio2017/x64/Debug/Shared Code/PluginProcessor.obj
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/juce_vst3_helper.exe
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/juce_vst3_helper.ilk
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/juce_vst3_helper.pdb
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/juce_VST3ManifestHelper.obj
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/CL.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/CL.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/CL.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/link.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/link.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/link.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/NoiseEnhancer_VST3ManifestHelper.lastbuildstate
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/rc.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/rc.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnh.81FA6B51.tlog/rc.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/NoiseEnhancer_VST3ManifestHelper.log
+Builds/VisualStudio2017/x64/Debug/VST3 Manifest Helper/resources.res
+Builds/VisualStudio2017/x64/Debug/VST3/include_juce_audio_plugin_client_VST3.obj
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/CL.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/CL.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/CL.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/link.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/link.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/link.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/NoiseEnhancer_VST3.lastbuildstate
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/NoiseEnhancer_VST3.write.1u.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/rc.command.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/rc.read.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/rc.write.1.tlog
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.dll
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.exp
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.ilk
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.lib
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.pdb
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.vst3/Contents/Resources/moduleinfo.json
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer.vst3/Contents/x86_64-win/NoiseEnhancer.vst3
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnhancer_VST3.log
+Builds/VisualStudio2017/x64/Debug/VST3/resources.res
+JuceLibraryCode/include_juce_audio_basics.cpp
+JuceLibraryCode/include_juce_audio_basics.mm
+JuceLibraryCode/include_juce_audio_devices.cpp
+JuceLibraryCode/include_juce_audio_devices.mm
+JuceLibraryCode/include_juce_audio_formats.cpp
+JuceLibraryCode/include_juce_audio_formats.mm
+JuceLibraryCode/include_juce_audio_plugin_client_AAX.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_AAX.mm
+JuceLibraryCode/include_juce_audio_plugin_client_AAX_utils.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_ARA.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_AU_1.mm
+JuceLibraryCode/include_juce_audio_plugin_client_AU_2.mm
+JuceLibraryCode/include_juce_audio_plugin_client_AUv3.mm
+JuceLibraryCode/include_juce_audio_plugin_client_LV2.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_LV2.mm
+JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_Unity.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_VST2.mm
+JuceLibraryCode/include_juce_audio_plugin_client_VST3.cpp
+JuceLibraryCode/include_juce_audio_plugin_client_VST3.mm
+JuceLibraryCode/include_juce_audio_processors.cpp
+JuceLibraryCode/include_juce_audio_processors.mm
+JuceLibraryCode/include_juce_audio_processors_ara.cpp
+JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp
+JuceLibraryCode/include_juce_audio_utils.cpp
+JuceLibraryCode/include_juce_audio_utils.mm
+JuceLibraryCode/include_juce_core.cpp
+JuceLibraryCode/include_juce_core.mm
+JuceLibraryCode/include_juce_data_structures.cpp
+JuceLibraryCode/include_juce_data_structures.mm
+JuceLibraryCode/include_juce_events.cpp
+JuceLibraryCode/include_juce_events.mm
+JuceLibraryCode/include_juce_graphics.cpp
+JuceLibraryCode/include_juce_graphics.mm
+JuceLibraryCode/include_juce_gui_basics.cpp
+JuceLibraryCode/include_juce_gui_basics.mm
+JuceLibraryCode/include_juce_gui_extra.cpp
+JuceLibraryCode/include_juce_gui_extra.mm
+JuceLibraryCode/JuceHeader.h
+JuceLibraryCode/JucePluginDefines.h
+JuceLibraryCode/ReadMe.txt
+NoiseEnhancer.filtergraph
