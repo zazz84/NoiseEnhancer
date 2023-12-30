@@ -12,7 +12,7 @@
 
 //==============================================================================
 
-const std::string NoiseEnhancerAudioProcessor::paramsNames[] = { "Frequency", "Threshold", "Attack", "Release", "HP", "LP", "Mix", "Volume" };
+const std::string NoiseEnhancerAudioProcessor::paramsNames[] = { "Frequency", "Threshold", "Dynamic", "Attack", "Release", "HP", "LP", "Mix", "Volume" };
 
 //==============================================================================
 NoiseEnhancerAudioProcessor::NoiseEnhancerAudioProcessor()
@@ -29,12 +29,15 @@ NoiseEnhancerAudioProcessor::NoiseEnhancerAudioProcessor()
 {
 	frequencyParameter = apvts.getRawParameterValue(paramsNames[0]);
 	thresholdParameter = apvts.getRawParameterValue(paramsNames[1]);
-	attackParameter    = apvts.getRawParameterValue(paramsNames[2]);
-	releaseParameter   = apvts.getRawParameterValue(paramsNames[3]);
-	HPParameter        = apvts.getRawParameterValue(paramsNames[4]);
-	LPParameter        = apvts.getRawParameterValue(paramsNames[5]);
-	mixParameter       = apvts.getRawParameterValue(paramsNames[6]);
-	volumeParameter    = apvts.getRawParameterValue(paramsNames[7]);
+	dynamicParameter   = apvts.getRawParameterValue(paramsNames[2]);
+	attackParameter    = apvts.getRawParameterValue(paramsNames[3]);
+	releaseParameter   = apvts.getRawParameterValue(paramsNames[4]);
+	HPParameter        = apvts.getRawParameterValue(paramsNames[5]);
+	LPParameter        = apvts.getRawParameterValue(paramsNames[6]);
+	mixParameter       = apvts.getRawParameterValue(paramsNames[7]);
+	volumeParameter    = apvts.getRawParameterValue(paramsNames[8]);
+
+	buttonSParameter = static_cast<juce::AudioParameterBool*>(apvts.getParameter("ButtonS"));
 }
 
 NoiseEnhancerAudioProcessor::~NoiseEnhancerAudioProcessor()
@@ -157,6 +160,7 @@ void NoiseEnhancerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
 	// Get params
 	const float frequency = frequencyParameter->load();
 	const float threshold = thresholdParameter->load();
+	const float dynamic = dynamicParameter->load();
 	const float attack = attackParameter->load();
 	const float release = releaseParameter->load();
 	const float HPFrequency = HPParameter->load();
@@ -164,8 +168,14 @@ void NoiseEnhancerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
 	const float mix = mixParameter->load();
 	const float volume = juce::Decibels::decibelsToGain(volumeParameter->load());
 
+	// Buttons
+	const auto buttonS = buttonSParameter->get();
+
 	// Mics constants
+	const float thresholdGain = juce::Decibels::decibelsToGain(threshold);
 	const float mixInverse = 1.0f - mix;
+	const float dynamicInverse = 1.0f - dynamic;
+	const float dynamicGain = juce::Decibels::decibelsToGain(dynamic * 18.0f) * dynamic;
 	const int channels = getTotalNumOutputChannels();
 	const int samples = buffer.getNumSamples();
 
@@ -177,7 +187,7 @@ void NoiseEnhancerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
 		envelopeFollowerFilter.setCoef(frequency, 0.8f);
 
 		auto& triggerEnvelopeFollower = m_triggerEnvelopeFollower[channel];
-		triggerEnvelopeFollower.setCoef(0.0f, 50.0f);
+		triggerEnvelopeFollower.setCoef(1.0f, 40.0f);
 
 		auto& noiseEnvelopeFollower = m_noiseEnvelopeFollower[channel];
 		noiseEnvelopeFollower.setCoef(attack, release);
@@ -197,21 +207,33 @@ void NoiseEnhancerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
 			const float inFilter = envelopeFollowerFilter.process(in);
 
 			// Envelope follower
-			const float inEnvelopeFollower = triggerEnvelopeFollower.process(fabsf(inFilter));
+			const float inEnvelopeFollower = triggerEnvelopeFollower.process(inFilter);
 
 			// Get noise volume
-			const float isAboveThreshold = (juce::Decibels::gainToDecibels(inEnvelopeFollower) > threshold) ? 1.0f : 0.0f;
+			const float aboveThreshold = fmaxf(0.0f, inEnvelopeFollower - thresholdGain);
+			const float isAboveThreshold = (aboveThreshold > 0.0f) ? (dynamicGain * aboveThreshold) + dynamicInverse : 0.0f;
+
+			// Noise AR envelope
 			const float noiseVolume = noiseEnvelopeFollower.process(isAboveThreshold);
 
 			// Generate noise
-			const float noise = 0.125f * noiseVolume * ((2.0f * rand() / RAND_MAX) -1.0f);
+			const float noise = 0.125f * noiseVolume * ((2.0f * rand() / RAND_MAX) - 1.0f);
 
 			// Filter noise
+			lowPassFilter.setCoef(100.0f + LPFrequency * fminf(1.0f, fmaxf(0.0f, noiseVolume)));
+
 			const float noiseHP = highPassFilter.process(noise);
 			const float noiseHPLP = lowPassFilter.process(noiseHP);
-			
+
 			// Apply volume
-			channelBuffer[sample] = volume * (mix * noiseHPLP + mixInverse * in);
+			if (buttonS)
+			{
+				channelBuffer[sample] = volume * inFilter;
+			}
+			else
+			{
+				channelBuffer[sample] = volume * (mix * noiseHPLP + mixInverse * in);
+			}
 		}
 	}
 }
@@ -250,14 +272,17 @@ juce::AudioProcessorValueTreeState::ParameterLayout NoiseEnhancerAudioProcessor:
 
 	using namespace juce;
 
-	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[0], paramsNames[0], NormalisableRange<float>( 20.0f, 20000.0f,  1.0f, 0.3f),  1000.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[0], paramsNames[0], NormalisableRange<float>( 40.0f, 20000.0f,  1.0f, 0.3f),  1000.0f));
 	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[1], paramsNames[1], NormalisableRange<float>(-60.0f,     0.0f,  1.0f, 1.0f),   -12.0f));
-	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[2], paramsNames[2], NormalisableRange<float>(  0.0f,   200.0f,  1.0f, 1.0f),    10.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[2], paramsNames[2], NormalisableRange<float>(  0.0f,     1.0f, 0.05f, 1.0f),     0.0f));
 	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[3], paramsNames[3], NormalisableRange<float>(  0.0f,   200.0f,  1.0f, 1.0f),    10.0f));
-	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[4], paramsNames[4], NormalisableRange<float>(  0.0f, 20000.0f,  1.0f, 0.3f),   100.0f));
-	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[5], paramsNames[5], NormalisableRange<float>( 20.0f, 20000.0f,  1.0f, 0.3f), 10000.0f));
-	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[6], paramsNames[6], NormalisableRange<float>(  0.0f,     1.0f, 0.05f, 1.0f),     1.0f));
-	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[7], paramsNames[7], NormalisableRange<float>(-12.0f,    12.0f,  0.1f, 1.0f),     0.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[4], paramsNames[4], NormalisableRange<float>(  0.0f,   200.0f,  1.0f, 1.0f),    10.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[5], paramsNames[5], NormalisableRange<float>( 40.0f, 20000.0f,  1.0f, 0.3f),   100.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[6], paramsNames[6], NormalisableRange<float>(100.0f, 20000.0f,  1.0f, 0.3f), 10000.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[7], paramsNames[7], NormalisableRange<float>(  0.0f,     1.0f, 0.05f, 1.0f),     1.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>(paramsNames[8], paramsNames[8], NormalisableRange<float>(-12.0f,    12.0f,  0.1f, 1.0f),     0.0f));
+
+	layout.add(std::make_unique<juce::AudioParameterBool>("ButtonS", "ButtonS", false));
 
 	return layout;
 }

@@ -128,3 +128,5 @@ JuceLibraryCode/JuceHeader.h
 JuceLibraryCode/JucePluginDefines.h
 JuceLibraryCode/ReadMe.txt
 NoiseEnhancer.filtergraph
+Builds/VisualStudio2017/x64/Debug/VST3/NoiseEnh.F2D2AE43.tlog/link.delete.1.tlog
+Source/PluginProcessor.cpp~RF10dc893.TMP

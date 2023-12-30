@@ -21,11 +21,13 @@ public:
     ~NoiseEnhancerAudioProcessorEditor() override;
 
 	// GUI setup
-	static const int N_SLIDERS_COUNT = 8;
+	static const int N_SLIDERS_COUNT = 9;
 	static const int SCALE = 70;
 	static const int LABEL_OFFSET = 25;
 	static const int SLIDER_WIDTH = 200;
 	static const int HUE = 25;
+
+	static const int BOTTOM_MENU_HEIGHT = 50;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
@@ -39,6 +41,9 @@ private:
     NoiseEnhancerAudioProcessor& audioProcessor;
 
 	juce::AudioProcessorValueTreeState& valueTreeState;
+
+	juce::TextButton buttonS{ "S" };
+	std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> buttonSAttachment;
 
 	juce::Label m_labels[N_SLIDERS_COUNT] = {};
 	juce::Slider m_sliders[N_SLIDERS_COUNT] = {};

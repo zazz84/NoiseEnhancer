@@ -70,12 +70,15 @@ private:
 
 	std::atomic<float>* frequencyParameter = nullptr;
 	std::atomic<float>* thresholdParameter = nullptr;
+	std::atomic<float>* dynamicParameter = nullptr;
 	std::atomic<float>* attackParameter = nullptr;
 	std::atomic<float>* releaseParameter = nullptr;
 	std::atomic<float>* HPParameter = nullptr;
 	std::atomic<float>* LPParameter = nullptr;
 	std::atomic<float>* mixParameter = nullptr;
 	std::atomic<float>* volumeParameter = nullptr;
+
+	juce::AudioParameterBool* buttonSParameter = nullptr;
 
 	TwoPoleBandPass m_envelopeFollowerFilter[2] = {};
 	EnvelopeFollower m_triggerEnvelopeFollower[2] = {};

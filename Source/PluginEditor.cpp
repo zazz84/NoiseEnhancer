@@ -39,7 +39,18 @@ NoiseEnhancerAudioProcessorEditor::NoiseEnhancerAudioProcessorEditor (NoiseEnhan
 		m_sliderAttachment[i].reset(new SliderAttachment(valueTreeState, NoiseEnhancerAudioProcessor::paramsNames[i], slider));
 	}
 
-	setSize((int)(SLIDER_WIDTH * 0.01f * SCALE * N_SLIDERS_COUNT), (int)(SLIDER_WIDTH * 0.01f * SCALE));
+	// Buttons
+	addAndMakeVisible(buttonS);
+
+	buttonS.setClickingTogglesState(true);
+
+	buttonSAttachment.reset(new juce::AudioProcessorValueTreeState::ButtonAttachment(valueTreeState, "ButtonS", buttonS));
+
+	buttonS.setColour(juce::TextButton::buttonColourId, light);
+
+	buttonS.setColour(juce::TextButton::buttonOnColourId, dark);;
+
+	setSize((int)(SLIDER_WIDTH * 0.01f * SCALE * N_SLIDERS_COUNT), (int)((SLIDER_WIDTH + BOTTOM_MENU_HEIGHT) * 0.01f * SCALE));	
 }
 
 NoiseEnhancerAudioProcessorEditor::~NoiseEnhancerAudioProcessorEditor()
@@ -68,4 +79,11 @@ void NoiseEnhancerAudioProcessorEditor::resized()
 		rectangles[i].removeFromBottom((int)(LABEL_OFFSET * 0.01f * SCALE));
 		m_labels[i].setBounds(rectangles[i]);
 	}
+
+	// Buttons
+	const int posY = height + (int)(BOTTOM_MENU_HEIGHT * 0.01f * SCALE * 0.25f);
+	const int buttonHeight = (int)(BOTTOM_MENU_HEIGHT * 0.01f * SCALE * 0.5f);
+
+	buttonS.setBounds((int)(width * 0.5f - buttonHeight * 0.6f), posY, buttonHeight, buttonHeight);
+
 }
